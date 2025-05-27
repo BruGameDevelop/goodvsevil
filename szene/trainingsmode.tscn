@@ -1,0 +1,15 @@
+[gd_scene load_steps=4 format=3 uid="uid://ck07uplqpn7x2"]
+
+[ext_resource type="Script" uid="uid://drlya17geiksh" path="res://skript/camera_2d.gd" id="1_1avq3"]
+[ext_resource type="PackedScene" uid="uid://bgkfqicq8qy5k" path="res://szene/mainmap.tscn" id="1_6iqib"]
+[ext_resource type="PackedScene" uid="uid://bf2kchh0yn2bp" path="res://szene/spieler.tscn" id="2_1avq3"]
+
+[node name="Trainingsmode" type="Node2D"]
+
+[node name="Camera2D" type="Camera2D" parent="."]
+script = ExtResource("1_1avq3")
+
+[node name="TileMapLayer" parent="." instance=ExtResource("1_6iqib")]
+
+[node name="spieler" parent="TileMapLayer" instance=ExtResource("2_1avq3")]
+position = Vector2(12264.5, 839.422)

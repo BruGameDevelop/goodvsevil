@@ -1,0 +1,24 @@
+[gd_scene load_steps=2 format=3 uid="uid://da0o8bqnqhvht"]
+
+[ext_resource type="Script" uid="uid://dk1b2j2oun2x1" path="res://skript/mainmenu.gd" id="1_1mvtj"]
+
+[node name="Control" type="Control"]
+layout_mode = 3
+anchors_preset = 0
+offset_right = 40.0
+offset_bottom = 40.0
+
+[node name="VBoxContainer" type="VBoxContainer" parent="."]
+layout_mode = 0
+offset_right = 40.0
+offset_bottom = 40.0
+alignment = 1
+script = ExtResource("1_1mvtj")
+
+[node name="Button" type="Button" parent="VBoxContainer"]
+layout_mode = 2
+text = "Spiel starten"
+
+[node name="Button2" type="Button" parent="VBoxContainer"]
+layout_mode = 2
+text = "Spiel beenden"

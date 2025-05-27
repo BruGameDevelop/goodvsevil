@@ -1,0 +1,102 @@
+[gd_scene load_steps=3 format=3 uid="uid://cucgeo041q7w7"]
+
+[ext_resource type="Script" uid="uid://u1wtf343lnp5" path="res://skript/team_lobby.gd" id="1_4vdj0"]
+[ext_resource type="PackedScene" uid="uid://bpt877p03hs32" path="res://szene/player_slot.tscn" id="1_xwvpy"]
+
+[node name="TeamLobby" type="Control"]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("1_4vdj0")
+
+[node name="TitleLabel" type="Label" parent="."]
+layout_mode = 0
+offset_right = 40.0
+offset_bottom = 23.0
+text = "Training"
+
+[node name="TeamsContainer" type="HBoxContainer" parent="."]
+layout_mode = 0
+offset_top = 50.0
+offset_right = 596.0
+offset_bottom = 283.0
+
+[node name="Team1Container" type="VBoxContainer" parent="TeamsContainer"]
+layout_mode = 2
+
+[node name="Team1Label" type="Label" parent="TeamsContainer/Team1Container"]
+layout_mode = 2
+text = "Team 1"
+
+[node name="PlayerSlot1" parent="TeamsContainer/Team1Container" instance=ExtResource("1_xwvpy")]
+layout_mode = 2
+
+[node name="PlayerSlot2" parent="TeamsContainer/Team1Container" instance=ExtResource("1_xwvpy")]
+layout_mode = 2
+
+[node name="PlayerSlot3" parent="TeamsContainer/Team1Container" instance=ExtResource("1_xwvpy")]
+layout_mode = 2
+
+[node name="PlayerSlot4" parent="TeamsContainer/Team1Container" instance=ExtResource("1_xwvpy")]
+layout_mode = 2
+
+[node name="PlayerSlot5" parent="TeamsContainer/Team1Container" instance=ExtResource("1_xwvpy")]
+layout_mode = 2
+
+[node name="PlayerSlot6" parent="TeamsContainer/Team1Container" instance=ExtResource("1_xwvpy")]
+layout_mode = 2
+
+[node name="Team2Container" type="VBoxContainer" parent="TeamsContainer"]
+layout_mode = 2
+
+[node name="Team2Label" type="Label" parent="TeamsContainer/Team2Container"]
+layout_mode = 2
+text = "Team 2"
+
+[node name="PlayerSlot7" parent="TeamsContainer/Team2Container" instance=ExtResource("1_xwvpy")]
+layout_mode = 2
+
+[node name="PlayerSlot8" parent="TeamsContainer/Team2Container" instance=ExtResource("1_xwvpy")]
+layout_mode = 2
+
+[node name="PlayerSlot9" parent="TeamsContainer/Team2Container" instance=ExtResource("1_xwvpy")]
+layout_mode = 2
+
+[node name="PlayerSlot10" parent="TeamsContainer/Team2Container" instance=ExtResource("1_xwvpy")]
+layout_mode = 2
+
+[node name="PlayerSlot11" parent="TeamsContainer/Team2Container" instance=ExtResource("1_xwvpy")]
+layout_mode = 2
+
+[node name="PlayerSlot12" parent="TeamsContainer/Team2Container" instance=ExtResource("1_xwvpy")]
+layout_mode = 2
+
+[node name="StartButton" type="Button" parent="."]
+layout_mode = 0
+offset_left = 50.0
+offset_top = 300.0
+offset_right = 96.0
+offset_bottom = 331.0
+disabled = true
+text = "Start"
+
+[node name="BackButton" type="Button" parent="."]
+layout_mode = 0
+offset_left = 300.0
+offset_top = 300.0
+offset_right = 362.0
+offset_bottom = 331.0
+text = "Zurück"
+
+[node name="ErrorLabel" type="AcceptDialog" parent="."]
+
+[node name="TeamswitchButton" type="Button" parent="."]
+layout_mode = 0
+offset_left = 140.0
+offset_top = 300.0
+offset_right = 268.0
+offset_bottom = 331.0
+text = "Team wechseln"

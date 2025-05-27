@@ -1,0 +1,43 @@
+[gd_scene load_steps=6 format=3 uid="uid://dcc1sbt5m7xpy"]
+
+[ext_resource type="Texture2D" uid="uid://cept2od6uk6um" path="res://asset/creep.png" id="1_5tc0m"]
+[ext_resource type="Script" uid="uid://bdxoixhfcn3tu" path="res://skript/creep.gd" id="1_fb46v"]
+[ext_resource type="Texture2D" uid="uid://cjbcs8qp47div" path="res://asset/grunbalken.png" id="2_wlenf"]
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_5tc0m"]
+radius = 7.00286
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_wlenf"]
+radius = 7.01142
+
+[node name="creep" type="CharacterBody2D"]
+collision_layer = 2
+collision_mask = 0
+script = ExtResource("1_fb46v")
+
+[node name="powerlevelcreep" type="Label" parent="."]
+offset_left = -20.8
+offset_top = -48.4
+offset_right = 19.2
+offset_bottom = -25.4
+
+[node name="lebensbalkencreep" type="TextureProgressBar" parent="."]
+offset_left = -31.0
+offset_top = -25.0
+offset_right = 33.0
+offset_bottom = -9.0
+value = 100.0
+texture_progress = ExtResource("2_wlenf")
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+texture = ExtResource("1_5tc0m")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+shape = SubResource("CircleShape2D_5tc0m")
+
+[node name="Area2D" type="Area2D" parent="."]
+position = Vector2(-30.8, -25.4)
+
+[node name="hitbox" type="CollisionShape2D" parent="Area2D"]
+position = Vector2(30.8, 25.4)
+shape = SubResource("CircleShape2D_wlenf")

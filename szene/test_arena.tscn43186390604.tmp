@@ -1,0 +1,89 @@
+[gd_scene load_steps=10 format=3 uid="uid://ybflav3cchco"]
+
+[ext_resource type="Texture2D" uid="uid://g4gjjqfc2aln" path="res://asset/gelbbalken.png" id="1_n4r26"]
+[ext_resource type="PackedScene" uid="uid://bf2kchh0yn2bp" path="res://szene/spieler.tscn" id="2_mmr6a"]
+[ext_resource type="PackedScene" uid="uid://cmr1mwk70ur84" path="res://szene/creepspawner.tscn" id="3_2dk1a"]
+[ext_resource type="PackedScene" uid="uid://bty0kbwu1stjw" path="res://szene/angriff.tscn" id="5_ai426"]
+
+[sub_resource type="WorldBoundaryShape2D" id="WorldBoundaryShape2D_kn5a1"]
+
+[sub_resource type="WorldBoundaryShape2D" id="WorldBoundaryShape2D_7ek1k"]
+distance = 100.0
+
+[sub_resource type="WorldBoundaryShape2D" id="WorldBoundaryShape2D_bllhg"]
+
+[sub_resource type="WorldBoundaryShape2D" id="WorldBoundaryShape2D_mmr6a"]
+
+[sub_resource type="CanvasItemMaterial" id="CanvasItemMaterial_bllhg"]
+light_mode = 2
+
+[node name="TestArena" type="Node2D"]
+
+[node name="spieler" parent="." instance=ExtResource("2_mmr6a")]
+position = Vector2(-469, -109)
+
+[node name="Camera2D" type="Camera2D" parent="."]
+
+[node name="wand" type="Node" parent="."]
+
+[node name="bot" type="Sprite2D" parent="wand"]
+position = Vector2(-3, 358)
+scale = Vector2(19.9844, 1)
+texture = ExtResource("1_n4r26")
+
+[node name="botfence" type="StaticBody2D" parent="wand/bot"]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="wand/bot/botfence"]
+shape = SubResource("WorldBoundaryShape2D_kn5a1")
+
+[node name="top" type="Sprite2D" parent="wand"]
+position = Vector2(0, -372)
+scale = Vector2(20.0156, 1.59375)
+texture = ExtResource("1_n4r26")
+
+[node name="topfence" type="StaticBody2D" parent="wand/top"]
+rotation = 3.14159
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="wand/top/topfence"]
+position = Vector2(0, 100)
+shape = SubResource("WorldBoundaryShape2D_7ek1k")
+
+[node name="right" type="Sprite2D" parent="wand"]
+position = Vector2(640.909, -13.4441)
+rotation = -1.5708
+scale = Vector2(11.658, 0.863641)
+texture = ExtResource("1_n4r26")
+
+[node name="StaticBody2D" type="StaticBody2D" parent="wand/right"]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="wand/right/StaticBody2D"]
+shape = SubResource("WorldBoundaryShape2D_bllhg")
+
+[node name="left" type="Sprite2D" parent="wand"]
+position = Vector2(-639.192, -9.42512)
+rotation = 1.5708
+scale = Vector2(11.6528, 0.573775)
+texture = ExtResource("1_n4r26")
+
+[node name="StaticBody2D" type="StaticBody2D" parent="wand/left"]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="wand/left/StaticBody2D"]
+shape = SubResource("WorldBoundaryShape2D_mmr6a")
+
+[node name="creepspawner" parent="." instance=ExtResource("3_2dk1a")]
+
+[node name="angriff" parent="." instance=ExtResource("5_ai426")]
+
+[node name="FogOfWarLayer" type="CanvasLayer" parent="."]
+follow_viewport_enabled = true
+
+[node name="FogOverlay" type="ColorRect" parent="FogOfWarLayer"]
+material = SubResource("CanvasItemMaterial_bllhg")
+offset_left = -635.0
+offset_top = -361.0
+offset_right = 645.0
+offset_bottom = 359.0
+color = Color(0.2, 0.2, 0.2, 0.996078)
+
+[node name="AttackTimer" type="Timer" parent="."]
+one_shot = true

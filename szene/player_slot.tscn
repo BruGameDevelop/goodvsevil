@@ -1,0 +1,35 @@
+[gd_scene load_steps=2 format=3 uid="uid://bpt877p03hs32"]
+
+[ext_resource type="Script" uid="uid://dekqd7ce1es4u" path="res://skript/player_slot.gd" id="1_74pah"]
+
+[node name="PlayerSlot" type="HBoxContainer"]
+offset_right = 40.0
+offset_bottom = 40.0
+script = ExtResource("1_74pah")
+
+[node name="NameField" type="LineEdit" parent="."]
+layout_mode = 2
+placeholder_text = "Player X"
+
+[node name="ColorDropdown" type="OptionButton" parent="."]
+layout_mode = 2
+item_count = 7
+popup/item_0/text = "Keine Auswahl"
+popup/item_0/id = 0
+popup/item_1/text = "Rot"
+popup/item_1/id = 1
+popup/item_2/text = "Blau"
+popup/item_2/id = 2
+popup/item_3/text = "Grün"
+popup/item_3/id = 3
+popup/item_4/text = "Gelb"
+popup/item_4/id = 4
+popup/item_5/text = "Weiß"
+popup/item_5/id = 5
+popup/item_6/text = "Schwarz"
+popup/item_6/id = 6
+
+[node name="ReadyCheck" type="CheckBox" parent="."]
+layout_mode = 2
+disabled = true
+text = "Bereit"
