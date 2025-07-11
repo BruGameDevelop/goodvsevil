@@ -1,0 +1,17 @@
+[gd_scene load_steps=4 format=3 uid="uid://dujk3koh735rw"]
+
+[ext_resource type="Script" uid="uid://cvnfd4lielerx" path="res://skript/hellrotquest_1_stein.gd" id="1_msvme"]
+[ext_resource type="Texture2D" uid="uid://bh8lcpvyihgsy" path="res://asset/rock.png" id="2_dj4ud"]
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_c00be"]
+radius = 5.0
+
+[node name="Area2D" type="Area2D"]
+script = ExtResource("1_msvme")
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+texture = ExtResource("2_dj4ud")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+position = Vector2(0, 2)
+shape = SubResource("CircleShape2D_c00be")

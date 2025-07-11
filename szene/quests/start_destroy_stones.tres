@@ -1,0 +1,16 @@
+[gd_resource type="Resource" script_class="QuestResource" load_steps=2 format=3 uid="uid://cx71jhjdcqqj0"]
+
+[ext_resource type="Script" uid="uid://begthjre3kqfa" path="res://szene/quests/quest_resource.gd" id="1_40prk"]
+
+[resource]
+script = ExtResource("1_40prk")
+quest_id = "\"start_destroy_3_stones\""
+title = "\"Zerstöre 3 Steine\""
+description = "\"Zerschlage drei der brüchigen Steine im Startgebiet, um deine Stärke zu zeigen.\""
+is_repeatable = false
+min_powerlevel = 0
+min_game_time = 0
+quest_type = "start"
+quest_ping_position = Vector2(0, 0)
+spawn_objects = Array[Dictionary]([{}, {}, {}])
+metadata/_custom_type_script = "uid://begthjre3kqfa"

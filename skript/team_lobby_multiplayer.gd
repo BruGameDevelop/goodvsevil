@@ -7,6 +7,7 @@ extends Control
 @onready var back_button = $BackButton  
 @onready var countdown_timer: Timer = $CountdownTimer
 @onready var countdown_label: Label = $CountdownLabel
+var RoomInfo = preload("res://server/server.gd").new()
 
 
 var farben = ["Rot", "Blau", "Grün", "Gelb", "Weiß", "Schwarz"]
@@ -18,6 +19,8 @@ var countdown_time := 10
 func _ready():
 	_connect_ready_signals()
 	countdown_timer.timeout.connect(_on_countdown_tick)
+	if not start_button.pressed.is_connected(_on_start_button_pressed):
+		start_button.pressed.connect(_on_start_button_pressed)
 	local_slot_index = GameState.local_slot_index
 	if GameState.is_training_mode:
 		_setup_for_training_mode()
@@ -32,7 +35,7 @@ func _ready():
 		else:
 			print("⚠️ Ignoriere Node in player_slots-Gruppe: ", slot.name, " (", slot.get_class(), ")")
 			
-	for i in all_containers.size():
+	for i in range(all_containers.size()):
 		var slot = all_containers[i]
 		if slot is PlayerSlot:
 			all_slots.append(slot)
@@ -47,8 +50,7 @@ func _ready():
 			slot.color_selected.connect(_on_farbe_changed.bind(slot))
 	
 	_init_local_player_slot()
-	if not start_button.pressed.is_connected(_on_start_button_pressed):  # <- Das kommt zu spät!
-		start_button.pressed.connect(_on_start_button_pressed)
+	
 
 func _on_ready_state_changed(_pressed):
 	var all_ready = true
@@ -180,10 +182,11 @@ func show_voll_error():
 
 
 func on_back_button_pressed():
-	var packed_scene = load("res://szene/modecontrol.tscn")
-	if packed_scene:
-		get_tree().change_scene_to_packed(packed_scene)
+		# Informiere Server, dass Spieler den Raum verlässt
+	rpc_id(1, "leave_room", GameState.current_room_id)
 
+	get_tree().change_scene_to_file("res://szene/multiplayer_menu.tscn")
+	_reset_lobby_state()
 
 func _on_start_button_pressed():
 	# Schritt 1: Sperre alle Slots
@@ -324,3 +327,28 @@ func _connect_ready_signals():
 		else:
 			print("⚠️ Ungültiger Node in Gruppe 'player_slots': ", slot.name, " (", slot.get_class(), ")")
 			
+@rpc("any_peer")
+func request_slot_update(name: String, color: String, team: String, ready: bool):
+	if multiplayer.is_server():
+		var peer_id = multiplayer.get_remote_sender_id()
+		print("📡 Slot-Update von Peer ", peer_id, ": ", name, color, team, ready)
+		RoomInfo.update_player_data(peer_id, name, color, team, ready)
+		# An alle senden
+		_sync_lobby_state()
+		
+@rpc("authority")
+func _sync_lobby_state():
+	for peer_id in RoomInfo.players:
+		var player_data = RoomInfo.players[peer_id]
+		rpc_id(peer_id, "_apply_lobby_state", RoomInfo.players)
+		
+@rpc("any_peer")
+func _apply_lobby_state(data: Dictionary):
+	# Hier wendest du das erhaltene Dictionary auf die Slots an:
+	for i in data.size():
+		var entry = data.values()[i]
+		var slot = all_slots[i]
+		slot.name_field.text = entry["name"]
+		slot.color_dropdown.select(farben.find(entry["color"]) + 1)
+		slot.ready_check.button_pressed = entry["ready"]
+		slot.set_editable(false)

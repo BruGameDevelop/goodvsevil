@@ -1,0 +1,112 @@
+[gd_scene load_steps=9 format=3 uid="uid://p3yklrm78fqc"]
+
+[ext_resource type="Script" uid="uid://cnllichipn4x5" path="res://skript/hud.gd" id="1_csyht"]
+[ext_resource type="Texture2D" uid="uid://c7qp182m2ac4x" path="res://icon.svg" id="2_pkmx0"]
+[ext_resource type="PackedScene" uid="uid://ctav5230lswnu" path="res://szene/minimap_ui.tscn" id="3_gqpdd"]
+[ext_resource type="Script" uid="uid://mrbc6wkvqdxe" path="res://skript/quest_ui.gd" id="4_r07rd"]
+
+[sub_resource type="Theme" id="Theme_gqpdd"]
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_r07rd"]
+bg_color = Color(0.86811, 0.853673, 0.0876784, 1)
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_gvtny"]
+bg_color = Color(0.400867, 0.873526, 0.215011, 1)
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_vw7be"]
+bg_color = Color(0.107545, 0.215806, 1, 1)
+
+[node name="HUD" type="CanvasLayer"]
+script = ExtResource("1_csyht")
+
+[node name="MarginContainer" type="MarginContainer" parent="."]
+anchors_preset = 2
+anchor_top = 1.0
+anchor_bottom = 1.0
+offset_left = 150.0
+offset_top = -89.0
+offset_right = 154.0
+grow_vertical = 0
+
+[node name="VBoxContainer" type="VBoxContainer" parent="MarginContainer"]
+layout_mode = 2
+
+[node name="Ausdauer" type="ProgressBar" parent="MarginContainer/VBoxContainer"]
+layout_mode = 2
+theme = SubResource("Theme_gqpdd")
+theme_override_styles/fill = SubResource("StyleBoxFlat_r07rd")
+
+[node name="Leben" type="ProgressBar" parent="MarginContainer/VBoxContainer"]
+layout_mode = 2
+theme_override_styles/fill = SubResource("StyleBoxFlat_gvtny")
+
+[node name="Energie" type="ProgressBar" parent="MarginContainer/VBoxContainer"]
+layout_mode = 2
+theme_override_styles/fill = SubResource("StyleBoxFlat_vw7be")
+
+[node name="TimeClock" type="Control" parent="."]
+layout_mode = 3
+anchors_preset = 5
+anchor_left = 0.5
+anchor_right = 0.5
+offset_left = -20.0
+offset_right = 20.0
+offset_bottom = 40.0
+grow_horizontal = 2
+
+[node name="Spielzeit" type="Label" parent="TimeClock"]
+layout_mode = 0
+offset_right = 40.0
+offset_bottom = 23.0
+text = "00:00"
+
+[node name="Tageszeit" type="Label" parent="TimeClock"]
+layout_mode = 0
+offset_top = 20.0
+offset_right = 40.0
+offset_bottom = 43.0
+text = "Day"
+
+[node name="Skillbar" type="PanelContainer" parent="."]
+anchors_preset = 7
+anchor_left = 0.5
+anchor_top = 1.0
+anchor_right = 0.5
+anchor_bottom = 1.0
+offset_left = -20.0
+offset_top = -40.0
+offset_right = 20.0
+grow_horizontal = 2
+grow_vertical = 0
+
+[node name="HBoxContainer" type="HBoxContainer" parent="Skillbar"]
+layout_mode = 2
+
+[node name="skillslot" type="Node" parent="Skillbar/HBoxContainer"]
+
+[node name="Characterportrait" type="TextureRect" parent="."]
+anchors_preset = 2
+anchor_top = 1.0
+anchor_bottom = 1.0
+offset_top = -128.0
+offset_right = 128.0
+grow_vertical = 0
+texture = ExtResource("2_pkmx0")
+
+[node name="MinimapUI" parent="." instance=ExtResource("3_gqpdd")]
+anchors_preset = 3
+anchor_left = 1.0
+anchor_top = 1.0
+offset_left = -256.0
+offset_top = -256.0
+offset_right = -256.0
+offset_bottom = -256.0
+grow_horizontal = 0
+grow_vertical = 0
+
+[node name="QuestUI" type="Control" parent="."]
+layout_mode = 3
+anchors_preset = 0
+offset_right = 40.0
+offset_bottom = 40.0
+script = ExtResource("4_r07rd")

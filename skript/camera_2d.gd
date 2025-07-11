@@ -2,13 +2,13 @@ extends Camera2D
 
 @export var rand_bereich := 30              # Pixel vom Bildschirmrand für Bewegung
 @export var scroll_speed := 500.0           # Geschwindigkeit der freien Kamera
-@export_node_path("Node2D") var spieler_pfad : NodePath = "../TileMapLayer/spieler"
+
 
 var folge_spieler := true
 var spieler_ref : Node2D
 
 func _ready():
-	spieler_ref = get_node(spieler_pfad)
+
 	make_current()
 
 func _process(delta):

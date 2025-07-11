@@ -13,6 +13,7 @@ var is_visible_in_light := false
 var spawn_position: Vector2
 var chase_timer: Timer
 var attacker = null
+var spawn_initialized := false
 
 @onready var health_bar = $lebensbalkencreep
 @onready var power_label = $powerlevelcreep
@@ -36,6 +37,9 @@ func _ready():
 	chase_timer.connect("timeout", Callable(self, "_on_chase_timer_timeout"))
 	
 func _process(delta):
+	if not spawn_initialized:
+		spawn_position = global_position
+		spawn_initialized = true
 	if is_aggressive and attacker and attacker.is_inside_tree():
 		# NPC verfolgt den Angreifer
 		var direction = (attacker.global_position - global_position).normalized()

@@ -21,6 +21,7 @@ var is_sprinting = false
 var sprint_velocity = Vector2.ZERO
 var attack_cooldown = 0.0
 var power_level = 1
+var current_class : PlayerClassResource  # Basisklassen-Referenz
 var stamina = 100.0
 var max_stamina = 100.0
 var stamina_regen_timer = 0.0
@@ -33,17 +34,24 @@ var stamina_regen_rate = normal_stamina_regen_rate  # wie viel Ausdauer pro Seku
 var boosted_stamina_regen_rate = 100.0
 var health = 1
 var stamina_depleted = false
-
-
-
+@onready var trainingsmode = get_tree().root.get_node("Trainingsmode")
+@onready var hud = trainingsmode.get_node("HUD")
 
 func _ready():
+	
+	
+	if current_class:
+		print("🟥 Klasse zugewiesen:", current_class.name)
 	power_label.position = Vector2(0, -60)
 	stamina_bar.position = Vector2(-30, -40)
 	$LightArea.body_entered.connect(_on_light_body_entered)
 	$LightArea.body_exited.connect(_on_light_body_exited)
-
-
+	hud = get_tree().get_root().get_node("Trainingmode/HUD")  # Pfad ggf. anpassen!
+	if hud:
+		hud.set_player_reference(self)
+	
+	
+	
 func _process(delta):
 	# Bewegungstracker
 	if velocity.length_squared() > 0:
@@ -137,6 +145,7 @@ func _process(delta):
 	stamina_bar.max_value = max_stamina
 	stamina_bar.value = stamina
 
+		
 	move_and_slide()
 
 		
@@ -151,7 +160,7 @@ func _on_light_body_exited(body):
 		body.hide_in_darkness()
 		
 func perform_attack():
-	var angriff = attack_zone_scene.instantiate()
+	var _angriff = attack_zone_scene.instantiate()
 	var windup = preload("res://szene/angriff_windup.tscn").instantiate()
 	add_child(windup)
 	
@@ -170,3 +179,19 @@ func perform_attack():
 	#angriff.rotation = attack_spawn_point.rotation
 	#angriff.attacker = self  # Spieler wird als Angreifer übergeben!
 	#add_child(angriff)
+	
+	
+func set_klasse(k: PlayerClassResource) -> void:
+	current_class = k
+	print("✅ Klasse gesetzt:", current_class.name)
+func get_stamina():
+	return {
+		"current": stamina,
+		"max": max_stamina
+	}
+	
+func get_health():
+	return {
+		"current": health,
+		"max": 1  # Später: max_health
+	}	

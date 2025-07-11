@@ -14,11 +14,9 @@ func _ready():
 	back_button.pressed.connect(_on_back_pressed)
 
 func _on_training_pressed():
-	var lobby_scene = preload("res://szene/team_lobby.tscn")
-	var lobby = lobby_scene.instantiate()
-	lobby.local_slot_index = 0  # z. B. Spieler 0, später dynamisch zuweisen
-	get_tree().root.add_child(lobby)
-	hide()  # Oder: queue_free(), wenn das Menü nicht mehr gebraucht wird
+	GameState.local_slot_index = 0  # Oder beliebig setzen
+	GameState.is_training_mode = true
+	get_tree().change_scene_to_file("res://szene/team_lobby.tscn")
 
 func _on_multiplayer_pressed():
 	print("Mehrspieler ausgewählt")

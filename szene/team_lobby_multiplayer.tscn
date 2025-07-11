@@ -1,6 +1,6 @@
-[gd_scene load_steps=3 format=3 uid="uid://cucgeo041q7w7"]
+[gd_scene load_steps=3 format=3 uid="uid://kykj1hoc7ipq"]
 
-[ext_resource type="Script" uid="uid://u1wtf343lnp5" path="res://skript/team_lobby_multiplayer.gd" id="1_4vdj0"]
+[ext_resource type="Script" uid="uid://u1wtf343lnp5" path="res://skript/team_lobby_multiplayer.gd" id="1_fa8ae"]
 [ext_resource type="PackedScene" uid="uid://bpt877p03hs32" path="res://szene/player_slot.tscn" id="1_xwvpy"]
 
 [node name="TeamLobby" type="Control"]
@@ -10,7 +10,7 @@ anchor_right = 1.0
 anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
-script = ExtResource("1_4vdj0")
+script = ExtResource("1_fa8ae")
 
 [node name="TitleLabel" type="Label" parent="."]
 layout_mode = 0

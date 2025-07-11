@@ -1,0 +1,11 @@
+[gd_resource type="Resource" script_class="PlayerClassResource" load_steps=2 format=3 uid="uid://gd6f3aqdsfo2"]
+
+[ext_resource type="Script" uid="uid://dph1du4ui270w" path="res://skript/player_class.gd" id="1_k7u8m"]
+
+[resource]
+script = ExtResource("1_k7u8m")
+name = "Dunkelrot"
+power_level_bonus = 1
+stamina_regen = 2.0
+hitbox_size = 1.2
+metadata/_custom_type_script = "uid://dph1du4ui270w"

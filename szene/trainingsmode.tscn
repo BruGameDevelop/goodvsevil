@@ -1,15 +1,41 @@
-[gd_scene load_steps=4 format=3 uid="uid://ck07uplqpn7x2"]
+[gd_scene load_steps=6 format=3 uid="uid://ck07uplqpn7x2"]
 
+[ext_resource type="Script" uid="uid://dp1iyuhwbaxg4" path="res://skript/trainingsmode.gd" id="1_1a4x8"]
 [ext_resource type="Script" uid="uid://drlya17geiksh" path="res://skript/camera_2d.gd" id="1_1avq3"]
 [ext_resource type="PackedScene" uid="uid://bgkfqicq8qy5k" path="res://szene/mainmap.tscn" id="1_6iqib"]
-[ext_resource type="PackedScene" uid="uid://bf2kchh0yn2bp" path="res://szene/spieler.tscn" id="2_1avq3"]
+[ext_resource type="PackedScene" uid="uid://cmr1mwk70ur84" path="res://szene/creepspawner.tscn" id="4_1a4x8"]
+[ext_resource type="Script" uid="uid://cwotetsgyb4pn" path="res://skript/game_manager.gd" id="5_dvf5v"]
 
 [node name="Trainingsmode" type="Node2D"]
+script = ExtResource("1_1a4x8")
 
 [node name="Camera2D" type="Camera2D" parent="."]
 script = ExtResource("1_1avq3")
 
 [node name="TileMapLayer" parent="." instance=ExtResource("1_6iqib")]
 
-[node name="spieler" parent="TileMapLayer" instance=ExtResource("2_1avq3")]
-position = Vector2(12264.5, 839.422)
+[node name="PlayerSpawner" type="Node2D" parent="."]
+
+[node name="Spawnpoint_Hellrot" type="Marker2D" parent="PlayerSpawner"]
+position = Vector2(12260, 840)
+
+[node name="Spawnpoint_Dunkelrot" type="Marker2D" parent="PlayerSpawner"]
+position = Vector2(12250, 1200)
+
+[node name="NPCSpawner" type="Node2D" parent="."]
+
+[node name="creepspawner" parent="NPCSpawner" instance=ExtResource("4_1a4x8")]
+position = Vector2(12250, 1000)
+
+[node name="TimeManager" type="Node" parent="."]
+
+[node name="GameManager" type="Node" parent="."]
+script = ExtResource("5_dvf5v")
+
+[node name="PromptManager" type="Node" parent="."]
+
+[node name="ChatManager" type="Node" parent="."]
+
+[node name="PlayerContainer" type="Node2D" parent="."]
+
+[node name="NPCContainer" type="Node2D" parent="."]

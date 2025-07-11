@@ -1,0 +1,36 @@
+Ich würde jetzt gerne die Klassen etwas ausarbeiten. Wie bereits etabliert möchte ich das klassensystem in 12 farben unterteilen. Jede Klasse soll einen gewissen spielstiel verfolgen und dieses durch die quests und die skills unterstreichen.
+Jede Klasse sollte zunächst einen aktiven Basisskill haben, welche die Angriffsmechanik optimiert und früh im Spielverlauf zu erhalten ist. Jede Klasse sollte eine Passivefertigkeit erwerben die sich konditionell auf das powerlevel auswirkt. Dann sollte jede Klasse eine Ultimative Fähigkeit haben die erst spät im Spiel verfügbar ist.
+
+
+
+Hier soweit die Basis Idee:
+
+Hellrot: Nahkämpfer, effektiv in langen kämpfen, soll den direkten Konflikt der Strategie vorziehen.
+Ressource: Wut: angriffe die kurz hintereinander erfolgen haben eine größere Reichweite.
+Skills: aktivierbarer angriff der viel schaden anrichtet, wenn er zweimal in folge auf das gleiche gebiet angewendet wird.
+Passiv: jeder angriff der trifft erhöht das Powerlevel prozentual bis auf ein gewisses maximum. Dieser Bonus wird nach einer Zeit wieder aufgehoben.
+Ultimativ: Keine betäubung oder Schaden an den Lebenspunkten möglich.
+
+Hellblau:Zauberer, sehr schwache angriffe. Soll planen und die Kämpfe kurz halten.Skills müssen aufgeladen werden über ressource, je mehr ressource verbraucht wird um so stärker der angriff.
+Ressource:Mana: muss über meditation oder quellen aufgeladen werden.
+Skills: Zauber: öffnet ein Menü mit Zaubern der 6 Farben die als quest erhalten und verstärkt werden können.
+Passive. Kann Ressource verwenden um sich kurzzeitig einen powerlevel boost zu verleihen.
+Ultimativ: kann eine Falle erschaffen die ein sicheres Todesurteil für einen Spieler darstellt.
+
+Hellgrün: Akrobat/Kavellerie: soll auf Geschwindikeit setzen, schnelle schwache Angriffe, kurze kämpfe im Ambush-style. Hohe mobilität soll sich viel bewegen.
+Ressource: Wind, wird zum erhhren des Bewegungstempos benutzt.
+Skills.
+
+Hellgelb:Mönch: soll auf hohe Ausdauer setzen, starke gegenangriffe, aufladezeit um langsame aber starke angriffe auszuführen. 
+
+Hellweiß:Ritter, schwach in allen Kategorien, synergiert besonders mit kooperation mit anderen Spielern.
+
+Hellschwarz:Bogenschütze, sehr stark und Effektiv, besonders stark im kampf gegen Spieler.
+
+
+Dunkelrot: Feuerbestie, wird regelmäßig stärker.
+Dunkelblau:KI, soll viel mikromanagement haben und zu einem Zielzustand hinarbeiten. Wenig kompakte Präzens auf der Karte, muss sich rtsmäßig um ressourcen kümmern
+Dunkelgrün:Werwolf: Soll den fokus auf die Jagd von Spielern setzen.Nachts deutlich stärker, muss sich tagsüber vorsichtig bewegen.
+Dunkelgelb:Vampir: Fokus auf leben und absorbtion von kraft und leben. Nachts deutlich stärker, kann sich Tagesüber nur in dunklen Zonen bewegen.
+Dunkelweiß:Golem, kann Form ändern je nachdem welche Zonen er aktiv aufsucht.
+Dunkelschwarz:Tod: skaliert mit Zerstörung auf der Karte.

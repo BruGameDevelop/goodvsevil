@@ -11,9 +11,16 @@ config_version=5
 [application]
 
 config/name="Goodvsevil"
-run/main_scene="uid://bf2kchh0yn2bp"
+run/main_scene="uid://daog5flmxjmd6"
 config/features=PackedStringArray("4.4", "Mobile")
 config/icon="res://icon.svg"
+
+[autoload]
+
+GameState="*res://autoloads/GameState.gd"
+PlayerManager="*res://autoloads/PlayerManager.gd"
+QuestManager="*res://autoloads/quest_manager.gd"
+MultiplayerManager="*res://autoloads/MultiplayerManager.gd"
 
 [display]
 
